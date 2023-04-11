@@ -11,5 +11,11 @@ from scipy.stats import cramervonmises_2samp
 def solution(x: np.array, y: np.array) -> bool:
     alpha = 0.03
     
-    p_value = cramervonmises_2samp(x=x, y=y, method='exact').pvalue
+    model = MMD(
+        compute_kernel='laplacian', bias='True'
+    )
+    _, p_value = model.test(x=x, 
+               y=y, 
+               random_state=26)
+    
     return p_value < alpha # Ваш ответ, True или False
