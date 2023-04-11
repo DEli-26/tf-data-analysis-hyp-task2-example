@@ -6,15 +6,10 @@ chat_id = 723988166 # Ваш chat ID, не меняйте название пе�
 
 from scipy.stats import anderson_ksamp
 from hyppo.ksample import MMD
-import pandas as pd
+from scipy.stats import cramervonmises_2samp
 
 def solution(x: np.array, y: np.array) -> bool:
     alpha = 0.03
     
-    model = MMD(
-        compute_kernel='laplacian'
-    )
-    _, p_value = model.test(x=x, 
-               y=y, 
-               random_state=26)
+    p_value = cramervonmises_2samp(x=x, y=y, method='exact').pvalue
     return p_value < alpha # Ваш ответ, True или False
