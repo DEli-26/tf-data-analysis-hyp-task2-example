@@ -12,7 +12,7 @@ def solution(x: np.array, y: np.array) -> bool:
     alpha = 0.03
     
     model = MMD(
-        compute_kernel='laplacian', bias='True'
+        compute_kernel='gaussian', bias='True'
     )
     _, p_value = model.test(x=x, 
                y=y, 
