@@ -14,7 +14,7 @@ def solution(x: np.array, y: np.array) -> bool:
     model = MMD(
         compute_kernel='gaussian', 
         #bias='True',
-        gamma=1,
+        gamma=0.1,
     )
     _, p_value = model.test(x=x, 
                y=y, 
